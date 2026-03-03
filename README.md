@@ -20,9 +20,9 @@ Este proyecto integra diseño mecánico, electrónica y software basado en ROS 2
 ## 📁 Estructura del repositorio
 
 RobotOmni/
-├── Mecanica/        # Archivos Fusion 360 y STL  
-├── Electronica/     # Diseño PCB, Gerbers y archivos editables  
-├── Software/        # Código de control y paquetes ROS 2  
+├── Mecanica/        
+├── Electronica/       
+├── Software/  
 └── README.md
 
 
