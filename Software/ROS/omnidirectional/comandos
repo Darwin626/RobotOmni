@@ -1,0 +1,18 @@
+source /opt/ros/iron/setup.bash
+colcon build --symlink-install
+source install/local_setup.bash
+ros2 launch omnidirectional rviz.launch.py
+
+
+Para verificar que el usb esta conectado y detectado buscar USB# en:
+	ls /dev/tty
+
+	sudo chmod 777 /dev/ttyUSB0
+
+
+Para actualizar paquete en raspberry
+	rsync -avz /home/vboxuser/Escritorio/omnidirectional pi@192.168.1.200:/home/pi/
+	
+	rsync -avz DIRECTORIO_PAQUETE pi@192.168.1.201:DIRECTORIO_DESTINO
+	
+export FASTRTPS_DEFAULT_PROFILES_FILE=~/fastdds.xml

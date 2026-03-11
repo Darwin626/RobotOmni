@@ -1,0 +1,2 @@
+El archivo base_uros fue creado con intención de integrar microROS al sistema, posteriormente la idea fue desechada pero mantenemos el archivo en caso de que te sea útil.
+Suerte.

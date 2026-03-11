@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- ==================== Parámetros ==================== -->
+  <xacro:property name="radio_rueda" value="0.029"/>
+  <xacro:property name="ancho_rueda"  value="0.015"/>
+  <xacro:property name="masa_rueda"  value="0.3"/>
+  <xacro:property name="radio_base"  value="0.10"/>
+  <xacro:property name="alto_base"  value="0.11"/>
+  <xacro:property name="centro_a_rueda" value="0.115"/>
+
+  <!-- Colores -->
+  <xacro:property name="color_chasis" value="0 0 1 1"/>     <!-- Azul -->
+  <xacro:property name="color_rueda" value="0 1 0 1"/>      <!-- Negro -->
+
+  <!-- ==================== Chasis base ==================== -->
+  <link name="base_link">
+    <inertial>
+      <mass value="3.0"/>
+      <origin xyz="0 0 ${alto_base/2}" rpy="0 0 0"/>
+      <inertia ixx="0.02" iyy="0.02" izz="0.04" ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <cylinder length="${alto_base}" radius="${radio_base}"/>
+      </geometry>
+      <origin xyz="0 0 ${alto_base/2}" rpy="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <cylinder length="${alto_base}" radius="${radio_base}"/>
+      </geometry>
+      <origin xyz="0 0 ${alto_base/2}" rpy="0 0 0"/>
+      <material name="color_chasis">
+        <color rgba="${color_chasis}"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- ==================== Macro para ruedas ==================== -->
+  <xacro:macro name="rueda" params="link_name joint_name angulo_grados">
+    <xacro:property name="angulo_rad" value="${angulo_grados * (3.1415926 / 180.0)}"/>
+    <xacro:property name="x_pos" value="${centro_a_rueda * cos(angulo_rad)}"/>
+    <xacro:property name="y_pos" value="${centro_a_rueda * sin(angulo_rad)}"/>
+
+    <link name="${link_name}">
+      <inertial>
+        <mass value="${masa_rueda}"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${(masa_rueda/12) * (3*radio_rueda*radio_rueda + ancho_rueda*ancho_rueda)}" iyy="${(masa_rueda/12) * (3*radio_rueda*radio_rueda + ancho_rueda*ancho_rueda)}" izz="${(masa_rueda/2) * (radio_rueda*radio_rueda)}" ixy="0.0" ixz="0.0" iyz="0.0"/>
+      </inertial>
+      <collision>
+      <geometry>
+        <cylinder length="${ancho_rueda}" radius="${radio_rueda}"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.9</mu>     <!-- Alta friccion en sentido de giro-->
+            <mu2>0.0</mu2>    <!-- Baja friccion en sentido perpendicular al giro-->
+          </ode>
+        </friction>
+      </surface>
+      </collision>
+      <visual>
+        <geometry>
+          <cylinder length="${ancho_rueda}" radius="${radio_rueda}"/>
+        </geometry>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <material name="color_rueda">
+          <color rgba="${color_rueda}"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="${joint_name}" type="continuous">
+      <parent link="base_link"/>
+      <child link="${link_name}"/>
+      <origin xyz="${x_pos} ${y_pos} ${ancho_rueda}" rpy="0 1.5708 ${angulo_rad}"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+  </xacro:macro>
+
+  <!-- ==================== Llamadas a ruedas ==================== -->
+  <xacro:rueda link_name="rueda1" joint_name="joint1" angulo_grados="60"/>
+  <xacro:rueda link_name="rueda2" joint_name="joint2" angulo_grados="180"/>
+  <xacro:rueda link_name="rueda3" joint_name="joint3" angulo_grados="300"/>
+
+</robot>

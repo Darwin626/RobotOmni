@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot name="robot_omni" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/robot_description.xacro"/>
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/ros_control.xacro"/>
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/gazebo_plugin.xacro"/>
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/lidar.xacro"/>
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/sharp_array.xacro"/>
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/odometria.xacro"/>
+  <xacro:include filename="/home/vboxuser/Escritorio/omnidirectional/urdf/imu.xacro"/>
+  
+</robot>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- ====================== Plugin Gazebo ===================== -->
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
+      <parameters>/home/vboxuser/Escritorio/omnidirectional/config/controller_manager.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>
