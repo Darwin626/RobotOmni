@@ -16,18 +16,6 @@ Este proyecto integra diseño mecánico, electrónica y software basado en ROS 2
 - Proyecto totalmente replicable
 
 ---
-
-## 📁 Estructura del repositorio
-
-RobotOmni/
-├── Mecanica/        
-├── Electronica/       
-├── Software/  
-└── README.md
-
-
----
-
 ## 🛠️ Diseño Mecánico
 
 Contiene:
