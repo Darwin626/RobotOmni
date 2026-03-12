@@ -1,9 +1,0 @@
--Instalación de UBUNTU 22.04 desktop
--Instalación de ROS2 Iron
--Instalación de paquete omnidirectional
-sudo apt-get update
-sudo apt install ros-iron-xacro
-sudo apt install xterm
-sudo apt install ros-iron-ros2-control ros-iron-ros2-controllers
-sudo apt install ros-iron-gazebo-ros-pkgs
-sudo apt install ros-iron-gazebo-ros2-control
